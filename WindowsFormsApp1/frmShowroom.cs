@@ -31,8 +31,6 @@ namespace WindowsFormsApp1
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                int insert = sqlHelper.ExecuteNonQuery("insert into tbl_Showroom values (@name)", CommandType.Text,
-               new System.Data.SqlClient.SqlParameter("@name", textBox1.Text));
 
                 MessageBox.Show("Please enter a showroom name.");
                 return;

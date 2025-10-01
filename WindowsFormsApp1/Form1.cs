@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        SqlHelperClass sqlHelper = new SqlHelperClass();
         public Form1()
         {
             InitializeComponent();
@@ -19,8 +21,7 @@ namespace WindowsFormsApp1
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowroom customer = new frmShowroom();
-            customer.ShowDialog();
+           
         }
 
         private void showLettersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,7 +105,31 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DataTable dt = sqlHelper.GetDataTable("SELECT ShowroomID, ShowroomName FROM tbl_Showroom", CommandType.Text);
 
+            cmbShowroom.DataSource = dt;
+            cmbShowroom.DisplayMember = "ShowroomName";   
+            cmbShowroom.ValueMember = "ShowroomID";       
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            frmShowLetters showLetter = new frmShowLetters();
+            showLetter.ShowDialog();
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowRoom showRoom = new frmShowRoom();
+            showRoom.ShowDialog();
+            Form1_Load(null, null);
         }
     }
 }
