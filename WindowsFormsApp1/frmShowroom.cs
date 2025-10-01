@@ -7,32 +7,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
-    public partial class frmShowroom : Form
+    public partial class frmShowRoom : Form
     {
-        SqlHelperClass db = new SqlHelperClass();
-        public frmShowroom()
+        SqlHelperClass sqlHelper = new SqlHelperClass();
+        public frmShowRoom()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            int Insert = db.ExecuteNonQuery("INSERT INTO tbl_Showroom VALUES (@name)", CommandType.Text,
-                new SqlParameter("@name", textBox1.Text)
-                );
-            if (Insert > 0)
-                MessageBox.Show("Record Inserted");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                int insert = sqlHelper.ExecuteNonQuery("insert into tbl_Showroom values (@name)", CommandType.Text,
+               new System.Data.SqlClient.SqlParameter("@name", textBox1.Text));
+
+                MessageBox.Show("Please enter a showroom name.");
+                return;
+            }
             else
-                MessageBox.Show("Record Not Inserted");
+            {
+                int insert = sqlHelper.ExecuteNonQuery("insert into tbl_Showroom values (@name)", CommandType.Text,
+               new System.Data.SqlClient.SqlParameter("@name", textBox1.Text));
+                if (insert > 0)
+                {
+                    MessageBox.Show("Showroom added successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add showroom.");
+                }
+            }
+
+            this.Close();
         }
     }
 }
