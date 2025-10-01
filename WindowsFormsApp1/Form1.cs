@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCustomer customer = new frmCustomer();
+            frmShowroom customer = new frmShowroom();
             customer.ShowDialog();
         }
 
