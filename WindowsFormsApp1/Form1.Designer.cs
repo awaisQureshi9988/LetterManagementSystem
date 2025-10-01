@@ -50,6 +50,20 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -236,7 +250,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(49, 14);
+            this.label6.Location = new System.Drawing.Point(36, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(196, 29);
             this.label6.TabIndex = 39;
@@ -247,7 +261,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(367, 1);
+            this.panel1.Location = new System.Drawing.Point(195, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(289, 53);
             this.panel1.TabIndex = 40;
@@ -256,7 +270,7 @@
             // 
             this.button5.BackColor = System.Drawing.Color.Crimson;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(914, -2);
+            this.button5.Location = new System.Drawing.Point(1274, 7);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(48, 43);
             this.button5.TabIndex = 43;
@@ -264,12 +278,151 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(879, 725);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 16);
+            this.label7.TabIndex = 57;
+            this.label7.Text = "0.00";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(867, 524);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(157, 21);
+            this.comboBox1.TabIndex = 56;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(702, 725);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 16);
+            this.label10.TabIndex = 55;
+            this.label10.Text = "BALANCE";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(867, 675);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(157, 20);
+            this.textBox8.TabIndex = 54;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(702, 678);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(72, 16);
+            this.label11.TabIndex = 53;
+            this.label11.Text = "ADVANCE";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(712, 394);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(287, 46);
+            this.label12.TabIndex = 52;
+            this.label12.Text = "CLEINT DETAILS";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(834, 767);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(97, 39);
+            this.button6.TabIndex = 51;
+            this.button6.Text = "SAVED";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(867, 625);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(157, 20);
+            this.textBox9.TabIndex = 50;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(701, 627);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 20);
+            this.label13.TabIndex = 49;
+            this.label13.Text = "PAYMENT";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(867, 575);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(157, 20);
+            this.textBox10.TabIndex = 48;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(701, 576);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 20);
+            this.label14.TabIndex = 47;
+            this.label14.Text = "NUMBER";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(701, 525);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(108, 20);
+            this.label15.TabIndex = 46;
+            this.label15.Text = "SHOWROOM";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(867, 474);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(157, 20);
+            this.textBox11.TabIndex = 45;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(701, 474);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(55, 20);
+            this.label16.TabIndex = 44;
+            this.label16.Text = "NAME";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(961, 473);
+            this.ClientSize = new System.Drawing.Size(1365, 833);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -330,6 +483,20 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label16;
     }
 }
 
