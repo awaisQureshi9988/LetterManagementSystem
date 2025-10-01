@@ -12,9 +12,17 @@ namespace WindowsFormsApp1
 {
     public partial class frmShowLetters : Form
     {
+        SqlHelperClass sqlHelper = new SqlHelperClass();    
         public frmShowLetters()
         {
             InitializeComponent();
+        }
+
+        private void frmShowLetters_Load(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt = sqlHelper.GetDataTable("select * from tbl_letterCustomerDetail ", CommandType.Text);
+            dataGridView1.DataSource = dt;
         }
     }
 }
