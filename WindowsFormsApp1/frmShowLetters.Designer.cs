@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -54,6 +56,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdoEngineNumber = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.rdoChasisNumber = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.rdoRegistrationNumber = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,23 +68,26 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 160);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(66, 18);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Search";
+            this.label1.Text = "Search ";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(9, 176);
+            this.txtSearch.Location = new System.Drawing.Point(13, 48);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(447, 20);
             this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // dataGridView1
             // 
@@ -88,18 +98,35 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.GhostWhite;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 202);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.Location = new System.Drawing.Point(9, 250);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1456, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(1456, 250);
             this.dataGridView1.TabIndex = 2;
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1483, 38);
@@ -143,10 +170,11 @@
             this.panel6.Controls.Add(this.label15);
             this.panel6.Controls.Add(this.label16);
             this.panel6.Controls.Add(this.label17);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(1092, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0, 0, 10, 10);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(363, 106);
+            this.panel6.Size = new System.Drawing.Size(357, 106);
             this.panel6.TabIndex = 3;
             // 
             // label14
@@ -157,7 +185,7 @@
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(153, 67);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(202, 25);
+            this.label14.Size = new System.Drawing.Size(196, 25);
             this.label14.TabIndex = 4;
             this.label14.Text = "544684552";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -181,7 +209,7 @@
             this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Location = new System.Drawing.Point(17, 34);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(338, 25);
+            this.label16.Size = new System.Drawing.Size(332, 25);
             this.label16.TabIndex = 2;
             this.label16.Text = "98265";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -383,17 +411,97 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Total Latters";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.BackColor = System.Drawing.Color.GhostWhite;
+            this.groupBox1.Controls.Add(this.rdoRegistrationNumber);
+            this.groupBox1.Controls.Add(this.rdoChasisNumber);
+            this.groupBox1.Controls.Add(this.rdoEngineNumber);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtSearch);
+            this.groupBox1.Location = new System.Drawing.Point(9, 160);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1462, 84);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Searching";
+            // 
+            // rdoEngineNumber
+            // 
+            this.rdoEngineNumber.AutoSize = true;
+            this.rdoEngineNumber.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoEngineNumber.CheckedState.BorderThickness = 0;
+            this.rdoEngineNumber.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoEngineNumber.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdoEngineNumber.CheckedState.InnerOffset = -4;
+            this.rdoEngineNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoEngineNumber.Location = new System.Drawing.Point(805, 46);
+            this.rdoEngineNumber.Name = "rdoEngineNumber";
+            this.rdoEngineNumber.Size = new System.Drawing.Size(141, 22);
+            this.rdoEngineNumber.TabIndex = 2;
+            this.rdoEngineNumber.Text = "Engine Number";
+            this.rdoEngineNumber.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdoEngineNumber.UncheckedState.BorderThickness = 2;
+            this.rdoEngineNumber.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdoEngineNumber.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // rdoChasisNumber
+            // 
+            this.rdoChasisNumber.AutoSize = true;
+            this.rdoChasisNumber.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoChasisNumber.CheckedState.BorderThickness = 0;
+            this.rdoChasisNumber.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoChasisNumber.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdoChasisNumber.CheckedState.InnerOffset = -4;
+            this.rdoChasisNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoChasisNumber.Location = new System.Drawing.Point(652, 46);
+            this.rdoChasisNumber.Name = "rdoChasisNumber";
+            this.rdoChasisNumber.Size = new System.Drawing.Size(147, 22);
+            this.rdoChasisNumber.TabIndex = 3;
+            this.rdoChasisNumber.Text = "Chases Number";
+            this.rdoChasisNumber.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdoChasisNumber.UncheckedState.BorderThickness = 2;
+            this.rdoChasisNumber.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdoChasisNumber.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // rdoRegistrationNumber
+            // 
+            this.rdoRegistrationNumber.AutoSize = true;
+            this.rdoRegistrationNumber.Checked = true;
+            this.rdoRegistrationNumber.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoRegistrationNumber.CheckedState.BorderThickness = 0;
+            this.rdoRegistrationNumber.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoRegistrationNumber.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdoRegistrationNumber.CheckedState.InnerOffset = -4;
+            this.rdoRegistrationNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoRegistrationNumber.Location = new System.Drawing.Point(465, 46);
+            this.rdoRegistrationNumber.Name = "rdoRegistrationNumber";
+            this.rdoRegistrationNumber.Size = new System.Drawing.Size(181, 22);
+            this.rdoRegistrationNumber.TabIndex = 4;
+            this.rdoRegistrationNumber.TabStop = true;
+            this.rdoRegistrationNumber.Text = "Registratoin Number";
+            this.rdoRegistrationNumber.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdoRegistrationNumber.UncheckedState.BorderThickness = 2;
+            this.rdoRegistrationNumber.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdoRegistrationNumber.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            // 
             // frmShowLetters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1483, 560);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmShowLetters";
@@ -414,6 +522,8 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,5 +557,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Guna.UI2.WinForms.Guna2RadioButton rdoEngineNumber;
+        private Guna.UI2.WinForms.Guna2RadioButton rdoRegistrationNumber;
+        private Guna.UI2.WinForms.Guna2RadioButton rdoChasisNumber;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
