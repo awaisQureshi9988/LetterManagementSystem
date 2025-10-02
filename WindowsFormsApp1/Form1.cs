@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -78,10 +79,61 @@ namespace WindowsFormsApp1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            frmCustomersDetail frmCustomerdetail = new frmCustomersDetail();
-            frmCustomerdetail.ShowDialog();
+            if (IsValidate())
+            {
+                
 
+                string query = @"INSERT INTO tbl_letterCustomerDetail
+                        (regNumber, bikeName, horsePower, engineNumber, chassisNumer, 
+                         customerName, showroomName, contactNumber, totalPayment, advance, balance)
+                        VALUES
+                        (@regNumber, @bikeName, @horsePower, @engineNumber, @chassisNumer, 
+                         @customerName, @showroomName, @contactNumber, @totalPayment, @advance, @balance)";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@regNumber", txtRegistrationNumber.Text),
+            new SqlParameter("@bikeName", txtBikeName.Text),
+            new SqlParameter("@horsePower", txtHoursePower.Text),
+            new SqlParameter("@engineNumber", txtEngineNumber.Text),
+            new SqlParameter("@chassisNumer", txtChassesNumber.Text),
+            new SqlParameter("@customerName", txtCustomerName.Text),
+            new SqlParameter("@showroomName", cmbShowroom.SelectedValue ?? (object)DBNull.Value),
+            new SqlParameter("@contactNumber", txtContactNumber.Text),
+            new SqlParameter("@totalPayment", string.IsNullOrEmpty(txtTotalPayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtTotalPayment.Text)),
+            new SqlParameter("@advance", string.IsNullOrEmpty(txtAdvancePayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtAdvancePayment.Text)),
+            new SqlParameter("@balance", string.IsNullOrEmpty(lblBalancePayable.Text) ? (object)DBNull.Value : Convert.ToDecimal(lblBalancePayable.Text))
+                };
+
+                int rows = sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Record inserted successfully!");
+
+                   
+                    txtRegistrationNumber.Enabled = false;
+                    txtBikeName.Enabled = false;
+                    txtHoursePower.Enabled = false;
+                    txtEngineNumber.Enabled = false;
+                    txtChassesNumber.Enabled = false;
+                    txtCustomerName.Enabled = false;
+                    cmbShowroom.Enabled = false;
+                    txtContactNumber.Enabled = false;
+                    txtTotalPayment.Enabled = false;
+                    txtAdvancePayment.Enabled = false;
+                    lblBalancePayable.Enabled = false;
+                    this.Close();
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Insert failed.");
+                }
+            }
         }
+
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
@@ -107,11 +159,18 @@ namespace WindowsFormsApp1
         {
             DataTable dt = sqlHelper.GetDataTable("SELECT ShowroomID, ShowroomName FROM tbl_Showroom", CommandType.Text);
 
-            cmbShowroom.DataSource = dt;
-            cmbShowroom.DisplayMember = "ShowroomName";   
-            cmbShowroom.ValueMember = "ShowroomID";       
+            DataRow dr = dt.NewRow();
+            dr["ShowroomID"] = 0;                   
+            dr["ShowroomName"] = "-- Select Showroom --";
+            dt.Rows.InsertAt(dr, 0);  
 
+            cmbShowroom.DataSource = dt;
+            cmbShowroom.DisplayMember = "ShowroomName";
+            cmbShowroom.ValueMember = "ShowroomID";
+
+            cmbShowroom.SelectedIndex = 0; // Make sure "-- Select --" is shown first
         }
+
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -131,5 +190,84 @@ namespace WindowsFormsApp1
             showRoom.ShowDialog();
             Form1_Load(null, null);
         }
+
+        private bool IsValidate()
+        {
+            
+            if (string.IsNullOrEmpty(txtRegistrationNumber.Text))
+            {
+                MessageBox.Show("Please enter registration number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtRegistrationNumber.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtHoursePower.Text))
+            {
+                MessageBox.Show("Please enter Hourse Power", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtHoursePower.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtEngineNumber.Text))
+            {
+                MessageBox.Show("Please enter engine number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEngineNumber.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtChassesNumber.Text))
+            {
+                MessageBox.Show("Please enter chases number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtChassesNumber.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtCustomerName.Text))
+            {
+                MessageBox.Show("Please enter customer name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCustomerName.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtContactNumber.Text))
+            {
+                MessageBox.Show("Please enter contact number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtContactNumber.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtTotalPayment.Text))
+            {
+                MessageBox.Show("Please enter total payment", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTotalPayment.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtAdvancePayment.Text))
+            {
+                MessageBox.Show("Please enter advance payment", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAdvancePayment.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private void txtTotalPayment_TextChanged(object sender, EventArgs e)
+        {
+            CalculateBalance();
+        }
+
+        private void txtAdvancePayment_TextChanged(object sender, EventArgs e)
+        {
+            CalculateBalance();
+        }
+
+        private void CalculateBalance()
+        {
+            decimal total = 0, advance = 0;
+
+            // TryParse ensures no crash if text is empty or invalid
+            decimal.TryParse(txtTotalPayment.Text, out total);
+            decimal.TryParse(txtAdvancePayment.Text, out advance);
+
+            decimal balance = total - advance;
+
+            // Show balance in label
+            lblBalancePayable.Text = balance.ToString();
+        }
+
     }
 }

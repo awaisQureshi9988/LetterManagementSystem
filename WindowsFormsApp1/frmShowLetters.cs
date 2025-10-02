@@ -21,8 +21,20 @@ namespace WindowsFormsApp1
         private void frmShowLetters_Load(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            dt = sqlHelper.GetDataTable("select * from tbl_letterCustomerDetail ", CommandType.Text);
+            dt = sqlHelper.GetDataTable("SELECT c.regNumber AS [Registration Number], c.bikeName           AS [Bike Name], c.horsePower AS [Horse Power], c.engineNumber       AS [Engine Number],c.chassisNumer  AS [Chassis Number], c.customerName   AS [Customer Name],s.ShowroomName AS [Showroom Name], c.contactNumber      AS [Contact Number], c.totalPayment       AS [Total Payment], c.advance            AS [Advance Payment],  c.balance            AS [Balance Payable] FROM    dbo.tbl_letterCustomerDetail c LEFT JOIN  dbo.tbl_Showroom s ON c.showroomName = s.ShowroomID ORDER BY     c.Id DESC;  ", CommandType.Text);
             dataGridView1.DataSource = dt;
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Form1 frm = new Form1();
+            frm.ShowDialog();
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            Form1 frm = new Form1();
+            frm.ShowDialog();
         }
     }
 }
