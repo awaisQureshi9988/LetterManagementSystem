@@ -84,15 +84,17 @@
             this.txtHoursePower.Location = new System.Drawing.Point(192, 130);
             this.txtHoursePower.Name = "txtHoursePower";
             this.txtHoursePower.Size = new System.Drawing.Size(405, 20);
-            this.txtHoursePower.TabIndex = 4;
+            this.txtHoursePower.TabIndex = 2;
+            this.txtHoursePower.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // txtRegistrationNumber
             // 
             this.txtRegistrationNumber.Location = new System.Drawing.Point(192, 38);
             this.txtRegistrationNumber.Name = "txtRegistrationNumber";
             this.txtRegistrationNumber.Size = new System.Drawing.Size(405, 20);
-            this.txtRegistrationNumber.TabIndex = 2;
+            this.txtRegistrationNumber.TabIndex = 0;
             this.txtRegistrationNumber.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.txtRegistrationNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // label5
             // 
@@ -109,8 +111,9 @@
             this.txtChassesNumber.Location = new System.Drawing.Point(192, 222);
             this.txtChassesNumber.Name = "txtChassesNumber";
             this.txtChassesNumber.Size = new System.Drawing.Size(405, 20);
-            this.txtChassesNumber.TabIndex = 6;
+            this.txtChassesNumber.TabIndex = 4;
             this.txtChassesNumber.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            this.txtChassesNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChassesNumber_KeyDown);
             // 
             // label9
             // 
@@ -137,15 +140,17 @@
             this.txtEngineNumber.Location = new System.Drawing.Point(192, 176);
             this.txtEngineNumber.Name = "txtEngineNumber";
             this.txtEngineNumber.Size = new System.Drawing.Size(405, 20);
-            this.txtEngineNumber.TabIndex = 5;
+            this.txtEngineNumber.TabIndex = 3;
             this.txtEngineNumber.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.txtEngineNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // txtBikeName
             // 
             this.txtBikeName.Location = new System.Drawing.Point(192, 84);
             this.txtBikeName.Name = "txtBikeName";
             this.txtBikeName.Size = new System.Drawing.Size(405, 20);
-            this.txtBikeName.TabIndex = 3;
+            this.txtBikeName.TabIndex = 1;
+            this.txtBikeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // lblBalancePayable
             // 
@@ -159,11 +164,13 @@
             // 
             // cmbShowroom
             // 
+            this.cmbShowroom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbShowroom.FormattingEnabled = true;
             this.cmbShowroom.Location = new System.Drawing.Point(192, 86);
             this.cmbShowroom.Name = "cmbShowroom";
             this.cmbShowroom.Size = new System.Drawing.Size(405, 21);
-            this.cmbShowroom.TabIndex = 56;
+            this.cmbShowroom.TabIndex = 6;
+            this.cmbShowroom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // label10
             // 
@@ -180,8 +187,9 @@
             this.txtAdvancePayment.Location = new System.Drawing.Point(192, 237);
             this.txtAdvancePayment.Name = "txtAdvancePayment";
             this.txtAdvancePayment.Size = new System.Drawing.Size(405, 20);
-            this.txtAdvancePayment.TabIndex = 54;
+            this.txtAdvancePayment.TabIndex = 9;
             this.txtAdvancePayment.TextChanged += new System.EventHandler(this.txtAdvancePayment_TextChanged);
+            this.txtAdvancePayment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAdvancePayment_KeyDown);
             // 
             // label11
             // 
@@ -198,8 +206,9 @@
             this.txtTotalPayment.Location = new System.Drawing.Point(192, 187);
             this.txtTotalPayment.Name = "txtTotalPayment";
             this.txtTotalPayment.Size = new System.Drawing.Size(405, 20);
-            this.txtTotalPayment.TabIndex = 50;
+            this.txtTotalPayment.TabIndex = 8;
             this.txtTotalPayment.TextChanged += new System.EventHandler(this.txtTotalPayment_TextChanged);
+            this.txtTotalPayment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // label13
             // 
@@ -216,7 +225,8 @@
             this.txtContactNumber.Location = new System.Drawing.Point(192, 137);
             this.txtContactNumber.Name = "txtContactNumber";
             this.txtContactNumber.Size = new System.Drawing.Size(405, 20);
-            this.txtContactNumber.TabIndex = 48;
+            this.txtContactNumber.TabIndex = 7;
+            this.txtContactNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // label14
             // 
@@ -243,7 +253,8 @@
             this.txtCustomerName.Location = new System.Drawing.Point(192, 36);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(405, 20);
-            this.txtCustomerName.TabIndex = 45;
+            this.txtCustomerName.TabIndex = 5;
+            this.txtCustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // label16
             // 
@@ -262,7 +273,7 @@
             this.btnAddUpdate.Location = new System.Drawing.Point(590, 650);
             this.btnAddUpdate.Name = "btnAddUpdate";
             this.btnAddUpdate.Size = new System.Drawing.Size(97, 33);
-            this.btnAddUpdate.TabIndex = 35;
+            this.btnAddUpdate.TabIndex = 10;
             this.btnAddUpdate.Text = "Save";
             this.btnAddUpdate.UseVisualStyleBackColor = false;
             this.btnAddUpdate.Click += new System.EventHandler(this.button2_Click_1);

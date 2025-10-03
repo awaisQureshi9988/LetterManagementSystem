@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            txtRegistrationNumber.Focus();
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,6 +158,10 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.BeginInvoke((MethodInvoker)delegate {
+                txtRegistrationNumber.Focus();
+            });
+
             DataTable dt = sqlHelper.GetDataTable("SELECT ShowroomID, ShowroomName FROM tbl_Showroom", CommandType.Text);
 
             DataRow dr = dt.NewRow();
@@ -168,7 +173,8 @@ namespace WindowsFormsApp1
             cmbShowroom.DisplayMember = "ShowroomName";
             cmbShowroom.ValueMember = "ShowroomID";
 
-            cmbShowroom.SelectedIndex = 0; // Make sure "-- Select --" is shown first
+            cmbShowroom.SelectedIndex = 0; 
+           
         }
 
 
@@ -269,5 +275,28 @@ namespace WindowsFormsApp1
             lblBalancePayable.Text = balance.ToString();
         }
 
+        private void txtRegistrationNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+
+        } 
+
+        private void txtChassesNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                txtCustomerName.Focus();
+            }
+        }
+
+        private void txtAdvancePayment_KeyDown(object sender, KeyEventArgs e)
+        {
+            btnAddUpdate.Focus();
+        }
     }
 }
