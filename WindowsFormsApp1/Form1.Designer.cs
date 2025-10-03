@@ -86,7 +86,7 @@
             this.txtRegistrationNumber.Name = "txtRegistrationNumber";
             this.txtRegistrationNumber.Size = new System.Drawing.Size(405, 20);
             this.txtRegistrationNumber.TabIndex = 0;
-            this.txtRegistrationNumber.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            //this.txtRegistrationNumber.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             this.txtRegistrationNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // label5
@@ -105,7 +105,7 @@
             this.txtChassesNumber.Name = "txtChassesNumber";
             this.txtChassesNumber.Size = new System.Drawing.Size(405, 20);
             this.txtChassesNumber.TabIndex = 4;
-            this.txtChassesNumber.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            //this.txtChassesNumber.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             this.txtChassesNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChassesNumber_KeyDown);
             // 
             // label9
@@ -134,7 +134,7 @@
             this.txtEngineNumber.Name = "txtEngineNumber";
             this.txtEngineNumber.Size = new System.Drawing.Size(405, 20);
             this.txtEngineNumber.TabIndex = 3;
-            this.txtEngineNumber.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            //this.txtEngineNumber.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.txtEngineNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // txtBikeName

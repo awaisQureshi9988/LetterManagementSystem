@@ -15,87 +15,54 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         SqlHelperClass sqlHelper = new SqlHelperClass();
+        public int ID { get; set; } = 0;
         public Form1()
         {
             InitializeComponent();
             txtRegistrationNumber.Focus();
         }
 
-        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void showLettersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmShowLetters letter = new frmShowLetters();
             letter.ShowDialog();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             if (IsValidate())
             {
-                try
+                if (ID == 0)
                 {
-                    string query = @"INSERT INTO tbl_letterCustomerDetail
+                    InsertDate();
+                }
+                else
+                {
+                    UpdateData();
+                }
+               
+            }
+        }
+
+        private void InsertDate()
+        {
+            try
+            {
+                string query = @"INSERT INTO tbl_letterCustomerDetail
                 (regNumber, bikeName, horsePower, engineNumber, chassisNumer, 
                  customerName, showroomName, contactNumber, totalPayment, advance, balance)
                 VALUES
                 (@regNumber, @bikeName, @horsePower, @engineNumber, @chassisNumer, 
                  @customerName, @showroomName, @contactNumber, @totalPayment, @advance, @balance)";
 
-                    SqlParameter[] parameters = new SqlParameter[]
-                    {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
                 new SqlParameter("@regNumber", txtRegistrationNumber.Text),
                 new SqlParameter("@bikeName", txtBikeName.Text),
-                new SqlParameter("@horsePower", cmbHorsePower.Text),
+                new SqlParameter("@horsePower", cmbHorsePower.SelectedValue),
                 new SqlParameter("@engineNumber", txtEngineNumber.Text),
                 new SqlParameter("@chassisNumer", txtChassesNumber.Text),
                 new SqlParameter("@customerName", txtCustomerName.Text),
@@ -104,58 +71,105 @@ namespace WindowsFormsApp1
                 new SqlParameter("@totalPayment", string.IsNullOrEmpty(txtTotalPayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtTotalPayment.Text)),
                 new SqlParameter("@advance", string.IsNullOrEmpty(txtAdvancePayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtAdvancePayment.Text)),
                 new SqlParameter("@balance", string.IsNullOrEmpty(lblBalancePayable.Text) ? (object)DBNull.Value : Convert.ToDecimal(lblBalancePayable.Text))
-                    };
+                };
 
-                    int rows = sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
+                int rows = sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
 
-                    if (rows > 0)
-                    {
-                        MessageBox.Show("Record inserted successfully!");
-
-
-
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Insert failed.");
-                    }
-                }
-                catch (SqlException ex)
+                if (rows > 0)
                 {
-                    if (ex.Number == 2627 || ex.Number == 2601)
-                    {
-                        MessageBox.Show("Duplicate entry detected. Please check Registration Number, Engine Number, or Chassis Number.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Database error: " + ex.Message);
-                    }
+                    MessageBox.Show("Record inserted successfully!");
+
+
+
+                    this.Close();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Unexpected error: " + ex.Message);
+                    MessageBox.Show("Insert failed.");
                 }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627 || ex.Number == 2601)
+                {
+                    MessageBox.Show("Duplicate entry detected. Please check Registration Number, Engine Number, or Chassis Number.");
+                }
+                else
+                {
+                    MessageBox.Show("Database error: " + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unexpected error: " + ex.Message);
+            }
+        }
+
+        private void UpdateData()
+        {
+            try
+            {
+                string query = @"UPDATE tbl_letterCustomerDetail
+                         SET regNumber = @regNumber,
+                             bikeName = @bikeName,
+                             horsePower = @horsePower,
+                             engineNumber = @engineNumber,
+                             chassisNumer = @chassisNumer,
+                             customerName = @customerName,
+                             showroomName = @showroomName,
+                             contactNumber = @contactNumber,
+                             totalPayment = @totalPayment,
+                             advance = @advance,
+                             balance = @balance,
+                             ModifyDate = GETDATE()
+                         WHERE Id = @Id";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@Id", ID),
+            new SqlParameter("@regNumber", txtRegistrationNumber.Text),
+            new SqlParameter("@bikeName", txtBikeName.Text),
+            new SqlParameter("@horsePower", cmbHorsePower.SelectedValue),
+            new SqlParameter("@engineNumber", txtEngineNumber.Text),
+            new SqlParameter("@chassisNumer", txtChassesNumber.Text),
+            new SqlParameter("@customerName", txtCustomerName.Text),
+            new SqlParameter("@showroomName", cmbShowroom.SelectedValue ?? (object)DBNull.Value),
+            new SqlParameter("@contactNumber", txtContactNumber.Text),
+            new SqlParameter("@totalPayment", string.IsNullOrEmpty(txtTotalPayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtTotalPayment.Text)),
+            new SqlParameter("@advance", string.IsNullOrEmpty(txtAdvancePayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtAdvancePayment.Text)),
+            new SqlParameter("@balance", string.IsNullOrEmpty(lblBalancePayable.Text) ? (object)DBNull.Value : Convert.ToDecimal(lblBalancePayable.Text))
+                };
+
+                int rows = sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Update failed. Record may not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627 || ex.Number == 2601) // Unique constraint violation
+                {
+                    MessageBox.Show("Duplicate entry detected. Please check Registration Number, Engine Number, or Chassis Number.");
+                }
+                else
+                {
+                    MessageBox.Show("Database error: " + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unexpected error: " + ex.Message);
             }
         }
 
 
-
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            //this.Close();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            // this.Close();
-        }
 
         private void button5_Click_1(object sender, EventArgs e)
         {
@@ -194,6 +208,56 @@ namespace WindowsFormsApp1
             cmbHorsePower.DisplayMember = "HorsePower";  
             cmbHorsePower.ValueMember = "HID";
             cmbHorsePower.SelectedIndex = 0;
+            if (ID != 0)
+            {
+                btnAddUpdate.Text = "Update";
+                LoadRecord(ID);
+            }
+        }
+        private void LoadRecord(int id)
+        {
+            try
+            {
+                string query = @"SELECT regNumber, bikeName, horsePower, engineNumber, chassisNumer, 
+                                customerName, showroomName, contactNumber, totalPayment, 
+                                advance, balance 
+                         FROM tbl_letterCustomerDetail 
+                         WHERE Id = @Id";
+
+                SqlParameter[] param = {
+            new SqlParameter("@Id", id)
+        };
+
+                DataTable dtRecord = sqlHelper.GetDataTable(query, CommandType.Text, param);
+
+                if (dtRecord.Rows.Count > 0)
+                {
+                    DataRow row = dtRecord.Rows[0];
+
+                    txtRegistrationNumber.Text = row["regNumber"].ToString();
+                    txtBikeName.Text = row["bikeName"].ToString();
+
+                    // If horsePower stores HID (int), set SelectedValue
+                    if (row["horsePower"] != DBNull.Value)
+                        cmbHorsePower.SelectedValue = Convert.ToInt32(row["horsePower"]);
+
+                    txtEngineNumber.Text = row["engineNumber"].ToString();
+                    txtChassesNumber.Text = row["chassisNumer"].ToString();
+                    txtCustomerName.Text = row["customerName"].ToString();
+
+                    if (row["showroomName"] != DBNull.Value)
+                        cmbShowroom.SelectedValue = Convert.ToInt32(row["showroomName"]);
+
+                    txtContactNumber.Text = row["contactNumber"].ToString();
+                    txtTotalPayment.Text = row["totalPayment"] == DBNull.Value ? "" : Convert.ToDecimal(row["totalPayment"]).ToString("0");
+                    txtAdvancePayment.Text = row["advance"] == DBNull.Value ? "" : Convert.ToDecimal(row["advance"]).ToString("0");
+                    lblBalancePayable.Text = row["balance"] == DBNull.Value ? "" : Convert.ToDecimal(row["balance"]).ToString("0");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -205,11 +269,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void label3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmShowRoom showRoom = new frmShowRoom();

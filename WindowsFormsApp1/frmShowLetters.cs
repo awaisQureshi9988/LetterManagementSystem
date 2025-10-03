@@ -21,10 +21,48 @@ namespace WindowsFormsApp1
 
         private void frmShowLetters_Load(object sender, EventArgs e)
         {
-           
-            dt = sqlHelper.GetDataTable("SELECT c.regNumber AS [Registration Number], c.bikeName           AS [Bike Name], c.horsePower AS [Horse Power], c.engineNumber       AS [Engine Number],c.chassisNumer  AS [Chassis Number], c.customerName   AS [Customer Name],s.ShowroomName AS [Showroom Name], c.contactNumber      AS [Contact Number], c.totalPayment       AS [Total Payment], c.advance            AS [Advance Payment],  c.balance            AS [Balance Payable] FROM    dbo.tbl_letterCustomerDetail c LEFT JOIN  dbo.tbl_Showroom s ON c.showroomName = s.ShowroomID ORDER BY     c.Id DESC;  ", CommandType.Text);
-            dataGridView1.DataSource = dt;
+
+            LoadLetters();
         }
+        private void LoadLetters()
+        {
+            string query = @"
+    SELECT 
+        c.Id AS [ID],
+        c.regNumber AS [Registration Number], 
+        c.bikeName AS [Bike Name], 
+        hp.HorsePower AS [Horse Power],   
+        c.engineNumber AS [Engine Number],
+        c.chassisNumer AS [Chassis Number], 
+        c.customerName AS [Customer Name],
+        s.ShowroomName AS [Showroom Name], 
+        c.contactNumber AS [Contact Number], 
+        CAST(c.totalPayment AS INT) AS [Total Payment], 
+        CAST(c.advance AS INT) AS [Advance Payment],  
+        CAST(c.balance AS INT) AS [Balance Payable],
+        FORMAT(ISNULL(c.ModifyDate, c.CreatedDate), 'dd-MM-yyyy') AS [Date],
+        FORMAT(ISNULL(c.ModifyDate, c.CreatedDate), 'hh:mm tt') AS [Time]
+    FROM dbo.tbl_letterCustomerDetail c 
+    LEFT JOIN dbo.tbl_Showroom s ON c.showroomName = s.ShowroomID
+    LEFT JOIN dbo.tbl_HorsePower hp ON c.horsePower = hp.HID  
+    ORDER BY c.Id DESC;
+";
+
+            try
+            {
+                DataTable dt = sqlHelper.GetDataTable(query, CommandType.Text);
+                dataGridView1.DataSource = dt;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading letters: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -36,8 +74,7 @@ namespace WindowsFormsApp1
         {
             Form1 frm = new Form1();
             frm.ShowDialog();
-            dt = sqlHelper.GetDataTable("SELECT c.regNumber AS [Registration Number], c.bikeName           AS [Bike Name], c.horsePower AS [Horse Power], c.engineNumber       AS [Engine Number],c.chassisNumer  AS [Chassis Number], c.customerName   AS [Customer Name],s.ShowroomName AS [Showroom Name], c.contactNumber      AS [Contact Number], c.totalPayment       AS [Total Payment], c.advance            AS [Advance Payment],  c.balance            AS [Balance Payable] FROM    dbo.tbl_letterCustomerDetail c LEFT JOIN  dbo.tbl_Showroom s ON c.showroomName = s.ShowroomID ORDER BY     c.Id DESC;  ", CommandType.Text);
-            dataGridView1.DataSource = dt;
+            LoadLetters();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -62,5 +99,19 @@ namespace WindowsFormsApp1
             dataGridView1.DataSource = dv;
         }
 
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // make sure it's not the header row
+            {
+                
+                int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ID"].Value);
+
+               
+                Form1 frm = new Form1();
+                frm.ID = id;
+                frm.ShowDialog();
+                LoadLetters();
+            }
+        }
     }
 }

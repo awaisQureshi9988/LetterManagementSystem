@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -57,10 +57,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdoEngineNumber = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdoChasisNumber = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rdoRegistrationNumber = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.rdoChasisNumber = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.rdoEngineNumber = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -98,50 +99,47 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(9, 250);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1456, 250);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
-            this.toolStripSeparator1});
+            this.toolStripSeparator1,
+            this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1483, 38);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // toolStripSeparator1
             // 
-            this.toolStripButton1.Image = global::WindowsFormsApp1.Properties.Resources.add;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(66, 35);
-            this.toolStripButton1.Text = "Add Latter";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_1);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
             // 
             // tableLayoutPanel1
             // 
@@ -187,7 +185,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(196, 25);
             this.label14.TabIndex = 4;
-            this.label14.Text = "544684552";
+            this.label14.Text = "01";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label15
@@ -197,9 +195,9 @@
             this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(7, 67);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(80, 18);
+            this.label15.Size = new System.Drawing.Size(47, 18);
             this.label15.TabIndex = 3;
-            this.label15.Text = "Completed";
+            this.label15.Text = "Active";
             // 
             // label16
             // 
@@ -211,7 +209,7 @@
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(332, 25);
             this.label16.TabIndex = 2;
-            this.label16.Text = "98265";
+            this.label16.Text = "1";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label17
@@ -221,9 +219,9 @@
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(12, 9);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(77, 25);
+            this.label17.Size = new System.Drawing.Size(68, 25);
             this.label17.TabIndex = 1;
-            this.label17.Text = "Orders";
+            this.label17.Text = "Users";
             // 
             // panel5
             // 
@@ -249,7 +247,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(193, 25);
             this.label10.TabIndex = 4;
-            this.label10.Text = "544684552";
+            this.label10.Text = "200";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
@@ -259,9 +257,9 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(7, 67);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(80, 18);
+            this.label11.Size = new System.Drawing.Size(52, 18);
             this.label11.TabIndex = 3;
-            this.label11.Text = "Completed";
+            this.label11.Text = "Return";
             // 
             // label12
             // 
@@ -273,7 +271,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(329, 25);
             this.label12.TabIndex = 2;
-            this.label12.Text = "98265";
+            this.label12.Text = "500";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label13
@@ -283,9 +281,9 @@
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(12, 9);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(77, 25);
+            this.label13.Size = new System.Drawing.Size(92, 25);
             this.label13.TabIndex = 1;
-            this.label13.Text = "Orders";
+            this.label13.Text = "Transfer";
             // 
             // panel4
             // 
@@ -311,7 +309,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(193, 25);
             this.label6.TabIndex = 4;
-            this.label6.Text = "544684552";
+            this.label6.Text = "525314";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
@@ -321,9 +319,9 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(7, 67);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 18);
+            this.label7.Size = new System.Drawing.Size(69, 18);
             this.label7.TabIndex = 3;
-            this.label7.Text = "Completed";
+            this.label7.Text = "Received";
             // 
             // label8
             // 
@@ -345,9 +343,9 @@
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(12, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(174, 25);
+            this.label9.Size = new System.Drawing.Size(203, 25);
             this.label9.TabIndex = 1;
-            this.label9.Text = "Balance Payable";
+            this.label9.Text = "Balance Receivable";
             // 
             // panel3
             // 
@@ -407,9 +405,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 25);
+            this.label2.Size = new System.Drawing.Size(78, 25);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Total Latters";
+            this.label2.Text = "Latters";
             // 
             // groupBox1
             // 
@@ -427,44 +425,6 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Searching";
-            // 
-            // rdoEngineNumber
-            // 
-            this.rdoEngineNumber.AutoSize = true;
-            this.rdoEngineNumber.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoEngineNumber.CheckedState.BorderThickness = 0;
-            this.rdoEngineNumber.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoEngineNumber.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoEngineNumber.CheckedState.InnerOffset = -4;
-            this.rdoEngineNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoEngineNumber.Location = new System.Drawing.Point(805, 46);
-            this.rdoEngineNumber.Name = "rdoEngineNumber";
-            this.rdoEngineNumber.Size = new System.Drawing.Size(141, 22);
-            this.rdoEngineNumber.TabIndex = 2;
-            this.rdoEngineNumber.Text = "Engine Number";
-            this.rdoEngineNumber.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoEngineNumber.UncheckedState.BorderThickness = 2;
-            this.rdoEngineNumber.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoEngineNumber.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            // 
-            // rdoChasisNumber
-            // 
-            this.rdoChasisNumber.AutoSize = true;
-            this.rdoChasisNumber.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoChasisNumber.CheckedState.BorderThickness = 0;
-            this.rdoChasisNumber.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoChasisNumber.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoChasisNumber.CheckedState.InnerOffset = -4;
-            this.rdoChasisNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChasisNumber.Location = new System.Drawing.Point(652, 46);
-            this.rdoChasisNumber.Name = "rdoChasisNumber";
-            this.rdoChasisNumber.Size = new System.Drawing.Size(147, 22);
-            this.rdoChasisNumber.TabIndex = 3;
-            this.rdoChasisNumber.Text = "Chases Number";
-            this.rdoChasisNumber.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoChasisNumber.UncheckedState.BorderThickness = 2;
-            this.rdoChasisNumber.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoChasisNumber.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             // 
             // rdoRegistrationNumber
             // 
@@ -487,10 +447,62 @@
             this.rdoRegistrationNumber.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdoRegistrationNumber.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             // 
-            // toolStripSeparator1
+            // rdoChasisNumber
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            this.rdoChasisNumber.AutoSize = true;
+            this.rdoChasisNumber.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoChasisNumber.CheckedState.BorderThickness = 0;
+            this.rdoChasisNumber.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoChasisNumber.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdoChasisNumber.CheckedState.InnerOffset = -4;
+            this.rdoChasisNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoChasisNumber.Location = new System.Drawing.Point(652, 46);
+            this.rdoChasisNumber.Name = "rdoChasisNumber";
+            this.rdoChasisNumber.Size = new System.Drawing.Size(147, 22);
+            this.rdoChasisNumber.TabIndex = 3;
+            this.rdoChasisNumber.Text = "Chases Number";
+            this.rdoChasisNumber.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdoChasisNumber.UncheckedState.BorderThickness = 2;
+            this.rdoChasisNumber.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdoChasisNumber.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // rdoEngineNumber
+            // 
+            this.rdoEngineNumber.AutoSize = true;
+            this.rdoEngineNumber.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoEngineNumber.CheckedState.BorderThickness = 0;
+            this.rdoEngineNumber.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdoEngineNumber.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdoEngineNumber.CheckedState.InnerOffset = -4;
+            this.rdoEngineNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoEngineNumber.Location = new System.Drawing.Point(805, 46);
+            this.rdoEngineNumber.Name = "rdoEngineNumber";
+            this.rdoEngineNumber.Size = new System.Drawing.Size(141, 22);
+            this.rdoEngineNumber.TabIndex = 2;
+            this.rdoEngineNumber.Text = "Engine Number";
+            this.rdoEngineNumber.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdoEngineNumber.UncheckedState.BorderThickness = 2;
+            this.rdoEngineNumber.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdoEngineNumber.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::WindowsFormsApp1.Properties.Resources.add;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(66, 35);
+            this.toolStripButton1.Text = "Add Latter";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_1);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = global::WindowsFormsApp1.Properties.Resources.transfer;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(86, 35);
+            this.toolStripButton3.Text = "Transfer Letter";
+            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // frmShowLetters
             // 
@@ -562,5 +574,6 @@
         private Guna.UI2.WinForms.Guna2RadioButton rdoRegistrationNumber;
         private Guna.UI2.WinForms.Guna2RadioButton rdoChasisNumber;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }
