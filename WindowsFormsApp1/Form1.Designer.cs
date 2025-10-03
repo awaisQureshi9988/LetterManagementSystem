@@ -30,7 +30,6 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtHoursePower = new System.Windows.Forms.TextBox();
             this.txtRegistrationNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtChassesNumber = new System.Windows.Forms.TextBox();
@@ -55,6 +54,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.cmbHorsePower = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -75,17 +76,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(27, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 18);
+            this.label4.Size = new System.Drawing.Size(107, 18);
             this.label4.TabIndex = 33;
-            this.label4.Text = "Hourse Power";
-            // 
-            // txtHoursePower
-            // 
-            this.txtHoursePower.Location = new System.Drawing.Point(192, 130);
-            this.txtHoursePower.Name = "txtHoursePower";
-            this.txtHoursePower.Size = new System.Drawing.Size(405, 20);
-            this.txtHoursePower.TabIndex = 2;
-            this.txtHoursePower.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
+            this.label4.Text = "Horse Power";
             // 
             // txtRegistrationNumber
             // 
@@ -315,13 +308,14 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.GhostWhite;
+            this.groupBox2.Controls.Add(this.cmbHorsePower);
+            this.groupBox2.Controls.Add(this.linkLabel2);
             this.groupBox2.Controls.Add(this.txtChassesNumber);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtHoursePower);
             this.groupBox2.Controls.Add(this.txtBikeName);
             this.groupBox2.Controls.Add(this.txtRegistrationNumber);
             this.groupBox2.Controls.Add(this.txtEngineNumber);
@@ -341,6 +335,27 @@
             this.label1.Size = new System.Drawing.Size(183, 40);
             this.label1.TabIndex = 61;
             this.label1.Text = "Letter Entery";
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(604, 134);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(26, 13);
+            this.linkLabel2.TabIndex = 59;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Add";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // cmbHorsePower
+            // 
+            this.cmbHorsePower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHorsePower.FormattingEnabled = true;
+            this.cmbHorsePower.Location = new System.Drawing.Point(192, 127);
+            this.cmbHorsePower.Name = "cmbHorsePower";
+            this.cmbHorsePower.Size = new System.Drawing.Size(405, 21);
+            this.cmbHorsePower.TabIndex = 2;
+            this.cmbHorsePower.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRegistrationNumber_KeyDown);
             // 
             // Form1
             // 
@@ -372,7 +387,6 @@
         #endregion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtHoursePower;
         private System.Windows.Forms.TextBox txtRegistrationNumber;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtChassesNumber;
@@ -397,6 +411,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ComboBox cmbHorsePower;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }
 

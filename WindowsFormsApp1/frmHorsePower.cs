@@ -10,21 +10,18 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class frmShowRoom : Form
+    public partial class frmHorsePower: Form
     {
         SqlHelperClass sqlHelper = new SqlHelperClass();
-        public frmShowRoom()
+        public frmHorsePower()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void frmHorsePower_Load(object sender, EventArgs e)
         {
+            textBox1.Focus();
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,29 +29,24 @@ namespace WindowsFormsApp1
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
 
-                MessageBox.Show("Please enter a showroom name.");
+                MessageBox.Show("Please enter a Horse Power.");
                 return;
             }
             else
             {
-                int insert = sqlHelper.ExecuteNonQuery("insert into tbl_Showroom values (@name)", CommandType.Text,
+                int insert = sqlHelper.ExecuteNonQuery("insert into tbl_HorsePower values (@name)", CommandType.Text,
                new System.Data.SqlClient.SqlParameter("@name", textBox1.Text));
                 if (insert > 0)
                 {
-                    MessageBox.Show("Showroom added successfully.");
+                    MessageBox.Show("Horse Power added successfully.");
                 }
                 else
                 {
-                    MessageBox.Show("Failed to add showroom.");
+                    MessageBox.Show("Failed to add Horse Power.");
                 }
             }
 
             this.Close();
-        }
-
-        private void frmShowRoom_Load(object sender, EventArgs e)
-        {
-            textBox1.Focus();
         }
     }
 }

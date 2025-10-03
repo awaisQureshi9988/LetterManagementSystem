@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void showLettersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -82,58 +82,64 @@ namespace WindowsFormsApp1
         {
             if (IsValidate())
             {
-                
-
-                string query = @"INSERT INTO tbl_letterCustomerDetail
-                        (regNumber, bikeName, horsePower, engineNumber, chassisNumer, 
-                         customerName, showroomName, contactNumber, totalPayment, advance, balance)
-                        VALUES
-                        (@regNumber, @bikeName, @horsePower, @engineNumber, @chassisNumer, 
-                         @customerName, @showroomName, @contactNumber, @totalPayment, @advance, @balance)";
-
-                SqlParameter[] parameters = new SqlParameter[]
+                try
                 {
-            new SqlParameter("@regNumber", txtRegistrationNumber.Text),
-            new SqlParameter("@bikeName", txtBikeName.Text),
-            new SqlParameter("@horsePower", txtHoursePower.Text),
-            new SqlParameter("@engineNumber", txtEngineNumber.Text),
-            new SqlParameter("@chassisNumer", txtChassesNumber.Text),
-            new SqlParameter("@customerName", txtCustomerName.Text),
-            new SqlParameter("@showroomName", cmbShowroom.SelectedValue ?? (object)DBNull.Value),
-            new SqlParameter("@contactNumber", txtContactNumber.Text),
-            new SqlParameter("@totalPayment", string.IsNullOrEmpty(txtTotalPayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtTotalPayment.Text)),
-            new SqlParameter("@advance", string.IsNullOrEmpty(txtAdvancePayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtAdvancePayment.Text)),
-            new SqlParameter("@balance", string.IsNullOrEmpty(lblBalancePayable.Text) ? (object)DBNull.Value : Convert.ToDecimal(lblBalancePayable.Text))
-                };
+                    string query = @"INSERT INTO tbl_letterCustomerDetail
+                (regNumber, bikeName, horsePower, engineNumber, chassisNumer, 
+                 customerName, showroomName, contactNumber, totalPayment, advance, balance)
+                VALUES
+                (@regNumber, @bikeName, @horsePower, @engineNumber, @chassisNumer, 
+                 @customerName, @showroomName, @contactNumber, @totalPayment, @advance, @balance)";
 
-                int rows = sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
+                    SqlParameter[] parameters = new SqlParameter[]
+                    {
+                new SqlParameter("@regNumber", txtRegistrationNumber.Text),
+                new SqlParameter("@bikeName", txtBikeName.Text),
+                new SqlParameter("@horsePower", cmbHorsePower.Text),
+                new SqlParameter("@engineNumber", txtEngineNumber.Text),
+                new SqlParameter("@chassisNumer", txtChassesNumber.Text),
+                new SqlParameter("@customerName", txtCustomerName.Text),
+                new SqlParameter("@showroomName", cmbShowroom.SelectedValue ?? (object)DBNull.Value),
+                new SqlParameter("@contactNumber", txtContactNumber.Text),
+                new SqlParameter("@totalPayment", string.IsNullOrEmpty(txtTotalPayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtTotalPayment.Text)),
+                new SqlParameter("@advance", string.IsNullOrEmpty(txtAdvancePayment.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtAdvancePayment.Text)),
+                new SqlParameter("@balance", string.IsNullOrEmpty(lblBalancePayable.Text) ? (object)DBNull.Value : Convert.ToDecimal(lblBalancePayable.Text))
+                    };
 
-                if (rows > 0)
-                {
-                    MessageBox.Show("Record inserted successfully!");
+                    int rows = sqlHelper.ExecuteNonQuery(query, CommandType.Text, parameters);
 
-                   
-                    txtRegistrationNumber.Enabled = false;
-                    txtBikeName.Enabled = false;
-                    txtHoursePower.Enabled = false;
-                    txtEngineNumber.Enabled = false;
-                    txtChassesNumber.Enabled = false;
-                    txtCustomerName.Enabled = false;
-                    cmbShowroom.Enabled = false;
-                    txtContactNumber.Enabled = false;
-                    txtTotalPayment.Enabled = false;
-                    txtAdvancePayment.Enabled = false;
-                    lblBalancePayable.Enabled = false;
-                    this.Close();
+                    if (rows > 0)
+                    {
+                        MessageBox.Show("Record inserted successfully!");
 
 
+
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insert failed.");
+                    }
                 }
-                else
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Insert failed.");
+                    if (ex.Number == 2627 || ex.Number == 2601)
+                    {
+                        MessageBox.Show("Duplicate entry detected. Please check Registration Number, Engine Number, or Chassis Number.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Database error: " + ex.Message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unexpected error: " + ex.Message);
                 }
             }
         }
+
+
 
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -148,7 +154,7 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-           // this.Close();
+            // this.Close();
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -158,24 +164,38 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BeginInvoke((MethodInvoker)delegate {
+            this.BeginInvoke((MethodInvoker)delegate
+            {
                 txtRegistrationNumber.Focus();
             });
 
+          
             DataTable dt = sqlHelper.GetDataTable("SELECT ShowroomID, ShowroomName FROM tbl_Showroom", CommandType.Text);
 
-            DataRow dr = dt.NewRow();
-            dr["ShowroomID"] = 0;                   
-            dr["ShowroomName"] = "-- Select Showroom --";
-            dt.Rows.InsertAt(dr, 0);  
+            DataRow drShowroom = dt.NewRow();
+            drShowroom["ShowroomID"] = 0;
+            drShowroom["ShowroomName"] = "-- Select Showroom --";
+            dt.Rows.InsertAt(drShowroom, 0);
 
             cmbShowroom.DataSource = dt;
             cmbShowroom.DisplayMember = "ShowroomName";
             cmbShowroom.ValueMember = "ShowroomID";
+            cmbShowroom.SelectedIndex = 0;
 
-            cmbShowroom.SelectedIndex = 0; 
-           
+         
+            DataTable dtHorsePower = sqlHelper.GetDataTable("SELECT HID, HorsePower FROM tbl_HorsePower", CommandType.Text);
+
+            DataRow drHorse = dtHorsePower.NewRow();
+            drHorse["HID"] = 0;
+            drHorse["HorsePower"] = "-- Select Horse Power --";
+            dtHorsePower.Rows.InsertAt(drHorse, 0);
+
+            cmbHorsePower.DataSource = dtHorsePower;
+            cmbHorsePower.DisplayMember = "HorsePower";  
+            cmbHorsePower.ValueMember = "HID";
+            cmbHorsePower.SelectedIndex = 0;
         }
+
 
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -187,7 +207,7 @@ namespace WindowsFormsApp1
 
         private void label3_Click_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -199,17 +219,17 @@ namespace WindowsFormsApp1
 
         private bool IsValidate()
         {
-            
+
             if (string.IsNullOrEmpty(txtRegistrationNumber.Text))
             {
                 MessageBox.Show("Please enter registration number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtRegistrationNumber.Focus();
                 return false;
             }
-            if (string.IsNullOrEmpty(txtHoursePower.Text))
+            if (string.IsNullOrEmpty(cmbHorsePower.Text))
             {
                 MessageBox.Show("Please enter Hourse Power", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHoursePower.Focus();
+                cmbHorsePower.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(txtEngineNumber.Text))
@@ -283,7 +303,7 @@ namespace WindowsFormsApp1
                 this.SelectNextControl((Control)sender, true, true, true, true);
             }
 
-        } 
+        }
 
         private void txtChassesNumber_KeyDown(object sender, KeyEventArgs e)
         {
@@ -296,7 +316,30 @@ namespace WindowsFormsApp1
 
         private void txtAdvancePayment_KeyDown(object sender, KeyEventArgs e)
         {
-            btnAddUpdate.Focus();
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnAddUpdate.Focus();
+            }
+           
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmHorsePower hp = new frmHorsePower();
+            hp.ShowDialog();
+
+            DataTable dtHorsePower = sqlHelper.GetDataTable("SELECT HID, HorsePower FROM tbl_HorsePower", CommandType.Text);
+
+            DataRow drHorse = dtHorsePower.NewRow();
+            drHorse["HID"] = 0;
+            drHorse["HorsePower"] = "-- Select Horse Power --";
+            dtHorsePower.Rows.InsertAt(drHorse, 0);
+
+            cmbHorsePower.DataSource = dtHorsePower;
+            cmbHorsePower.DisplayMember = "HorsePower";
+            cmbHorsePower.ValueMember = "HID";
+            cmbHorsePower.SelectedIndex = 0;
         }
     }
 }
