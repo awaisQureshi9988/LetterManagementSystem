@@ -47,14 +47,14 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblReceived = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblBalanceReceivable = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblCompletedLetters = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblTotalLetters = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoRegistrationNumber = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -247,7 +247,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(193, 25);
             this.label10.TabIndex = 4;
-            this.label10.Text = "200";
+            this.label10.Text = "0";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
@@ -271,7 +271,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(329, 25);
             this.label12.TabIndex = 2;
-            this.label12.Text = "500";
+            this.label12.Text = "0";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label13
@@ -288,9 +288,9 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.lblReceived);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.lblBalanceReceivable);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(364, 0);
@@ -299,18 +299,18 @@
             this.panel4.Size = new System.Drawing.Size(354, 106);
             this.panel4.TabIndex = 1;
             // 
-            // label6
+            // lblReceived
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblReceived.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(153, 67);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(193, 25);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "525314";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReceived.ForeColor = System.Drawing.Color.White;
+            this.lblReceived.Location = new System.Drawing.Point(153, 67);
+            this.lblReceived.Name = "lblReceived";
+            this.lblReceived.Size = new System.Drawing.Size(193, 25);
+            this.lblReceived.TabIndex = 4;
+            this.lblReceived.Text = "0";
+            this.lblReceived.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
@@ -323,18 +323,18 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Received";
             // 
-            // label8
+            // lblBalanceReceivable
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblBalanceReceivable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(17, 34);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(329, 25);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "98265";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblBalanceReceivable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBalanceReceivable.ForeColor = System.Drawing.Color.White;
+            this.lblBalanceReceivable.Location = new System.Drawing.Point(17, 34);
+            this.lblBalanceReceivable.Name = "lblBalanceReceivable";
+            this.lblBalanceReceivable.Size = new System.Drawing.Size(329, 25);
+            this.lblBalanceReceivable.TabIndex = 2;
+            this.lblBalanceReceivable.Text = "0";
+            this.lblBalanceReceivable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label9
             // 
@@ -343,16 +343,16 @@
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(12, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(203, 25);
+            this.label9.Size = new System.Drawing.Size(119, 25);
             this.label9.TabIndex = 1;
-            this.label9.Text = "Balance Receivable";
+            this.label9.Text = "Receivable";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.lblCompletedLetters);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.lblTotalLetters);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -361,18 +361,18 @@
             this.panel3.Size = new System.Drawing.Size(354, 106);
             this.panel3.TabIndex = 0;
             // 
-            // label4
+            // lblCompletedLetters
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblCompletedLetters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(153, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(193, 25);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "544684552";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCompletedLetters.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompletedLetters.ForeColor = System.Drawing.Color.White;
+            this.lblCompletedLetters.Location = new System.Drawing.Point(153, 67);
+            this.lblCompletedLetters.Name = "lblCompletedLetters";
+            this.lblCompletedLetters.Size = new System.Drawing.Size(193, 25);
+            this.lblCompletedLetters.TabIndex = 4;
+            this.lblCompletedLetters.Text = "0";
+            this.lblCompletedLetters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
@@ -385,18 +385,18 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Completed";
             // 
-            // label3
+            // lblTotalLetters
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTotalLetters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(17, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(329, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "98265";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTotalLetters.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalLetters.ForeColor = System.Drawing.Color.White;
+            this.lblTotalLetters.Location = new System.Drawing.Point(17, 34);
+            this.lblTotalLetters.Name = "lblTotalLetters";
+            this.lblTotalLetters.Size = new System.Drawing.Size(329, 25);
+            this.lblTotalLetters.TabIndex = 2;
+            this.lblTotalLetters.Text = "0";
+            this.lblTotalLetters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -503,6 +503,7 @@
             this.toolStripButton3.Size = new System.Drawing.Size(86, 35);
             this.toolStripButton3.Text = "Transfer Letter";
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // frmShowLetters
             // 
@@ -560,14 +561,14 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblReceived;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblBalanceReceivable;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCompletedLetters;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblTotalLetters;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private Guna.UI2.WinForms.Guna2RadioButton rdoEngineNumber;

@@ -23,6 +23,11 @@ namespace WindowsFormsApp1
         {
 
             LoadLetters();
+            lblBalanceReceivable.Text = GetTotalReceivable().ToString();
+            lblReceived.Text = GetTotalReceived().ToString();
+            lblTotalLetters.Text =  GetTotalLetterCount().ToString();
+            lblCompletedLetters.Text =  GetTotalCompletedLetters().ToString();
+
         }
         private void LoadLetters()
         {
@@ -39,7 +44,7 @@ namespace WindowsFormsApp1
         c.contactNumber AS [Contact Number], 
         CAST(c.totalPayment AS INT) AS [Total Payment], 
         CAST(c.advance AS INT) AS [Advance Payment],  
-        CAST(c.balance AS INT) AS [Balance Payable],
+        CAST(c.balance AS INT) AS [Balance Receivable],
         FORMAT(ISNULL(c.ModifyDate, c.CreatedDate), 'dd-MM-yyyy') AS [Date],
         FORMAT(ISNULL(c.ModifyDate, c.CreatedDate), 'hh:mm tt') AS [Time]
     FROM dbo.tbl_letterCustomerDetail c 
@@ -50,9 +55,10 @@ namespace WindowsFormsApp1
 
             try
             {
-                DataTable dt = sqlHelper.GetDataTable(query, CommandType.Text);
+                dt = sqlHelper.GetDataTable(query, CommandType.Text);
                 dataGridView1.DataSource = dt;
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.Columns["ID"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -75,6 +81,11 @@ namespace WindowsFormsApp1
             Form1 frm = new Form1();
             frm.ShowDialog();
             LoadLetters();
+            lblBalanceReceivable.Text = GetTotalReceivable().ToString();
+            lblReceived.Text = GetTotalReceived().ToString();
+            lblTotalLetters.Text = GetTotalLetterCount().ToString();
+            lblCompletedLetters.Text = GetTotalCompletedLetters().ToString();
+
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -98,6 +109,73 @@ namespace WindowsFormsApp1
             dv.RowFilter = filter;
             dataGridView1.DataSource = dv;
         }
+       
+
+        private int GetTotalReceived()
+        {
+            try
+            {
+                string query = "SELECT ISNULL(SUM(CAST(advance AS INT)), 0) FROM tbl_letterCustomerDetail";
+                object result = sqlHelper.ExecuteScalar(query, CommandType.Text);
+                return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calculating Total Received: " + ex.Message);
+                return 0;
+            }
+        }
+
+        private int GetTotalReceivable()
+        {
+            try
+            {
+                string query = "SELECT ISNULL(SUM(CAST(balance AS INT)), 0) FROM tbl_letterCustomerDetail";
+                object result = sqlHelper.ExecuteScalar(query, CommandType.Text);
+                return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calculating Total Receivable: " + ex.Message);
+                return 0;
+            }
+        }
+
+        private int GetTotalLetterCount()
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM tbl_letterCustomerDetail";
+                object result = sqlHelper.ExecuteScalar(query, CommandType.Text);
+                return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getting total letters: " + ex.Message);
+                return 0;
+            }
+        }
+
+        private int GetTotalCompletedLetters()
+        {
+            try
+            {
+
+                string query = @"SELECT COUNT(*) 
+                 FROM tbl_letterCustomerDetail 
+                 WHERE ISNULL(balance,0) <= 0";
+
+                object result = sqlHelper.ExecuteScalar(query, CommandType.Text);
+                return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getting completed letters: " + ex.Message);
+                return 0;
+            }
+        }
+
+
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -111,7 +189,16 @@ namespace WindowsFormsApp1
                 frm.ID = id;
                 frm.ShowDialog();
                 LoadLetters();
+                lblBalanceReceivable.Text = GetTotalReceivable().ToString();
+                lblReceived.Text = GetTotalReceived().ToString();
+                lblTotalLetters.Text = GetTotalLetterCount().ToString();
+                lblCompletedLetters.Text = GetTotalCompletedLetters().ToString();
             }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Comming soon");
         }
     }
 }
